@@ -1,8 +1,20 @@
 [
   {
-    "id": "1759724118275",
-    "nombre": "asdadsasdasdasd",
-    "descripcion": "adsasdasdasd",
-    "precio": 34433434
+    "id": "1000000000001",
+    "nombre": "Laptop Dell Inspiron 15",
+    "descripcion": "Laptop de 15.6 pulgadas, Intel Core i5, 8GB RAM, 256GB SSD",
+    "precio": 550000
+  },
+  {
+    "id": "1000000000002",
+    "nombre": "Auriculares Sony WH-1000XM4",
+    "descripcion": "Auriculares inalámbricos con cancelación de ruido y batería de larga duración",
+    "precio": 250000
+  },
+  {
+    "id": "1000000000003",
+    "nombre": "Smartwatch Xiaomi Mi Band 7",
+    "descripcion": "Reloj inteligente con monitor de actividad física y notificaciones",
+    "precio": 70000
   }
 ]
