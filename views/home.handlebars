@@ -1,0 +1,96 @@
+<div class="container mt-4">
+  <h1>Gestor de productos</h1>
+  <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#crearProductoModal">Agregar
+    producto</button>
+
+  <div class="row">
+    {{#each productos}}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title mb-1">{{nombre}}</h5>
+            <p class="card-text mb-1"><strong>Descripción:</strong> {{descripcion}}</p>
+            <p class="card-text mb-3"><strong>Precio:</strong> ${{precio}}</p>
+          </div>
+          <div class="mt-auto d-flex gap-2">
+            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#editProductoModal-{{id}}">Editar</button>
+            <form action="/productos/{{id}}/delete" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="modal fade" id="crearProductoModal" tabindex="-1" aria-labelledby="crearProductoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/productos" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="crearProductoModalLabel">Añadir producto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="add-nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="add-nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="add-descripcion" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="add-descripcion" name="descripcion" required>
+            </div>
+            <div class="mb-3">
+              <label for="add-precio" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="add-precio" name="precio" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{#each productos}}
+  <div class="modal fade" id="editProductoModal-{{id}}" tabindex="-1" aria-labelledby="editProductoModalLabel-{{id}}"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/productos/{{id}}/edit" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editProductoModalLabel-{{id}}">Editar producto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="edit-nombre-{{id}}" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="edit-nombre-{{id}}" name="nombre" value="{{nombre}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit-descripcion-{{id}}" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="edit-descripcion-{{id}}" name="descripcion"
+                value="{{descripcion}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="edit-precio-{{id}}" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="edit-precio-{{id}}" name="precio" value="{{precio}}"
+                required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
